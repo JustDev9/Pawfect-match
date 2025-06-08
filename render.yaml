@@ -1,0 +1,46 @@
+services:
+  # Backend service
+  - type: web
+    name: pawfect-backend
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: cd backend && gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.0
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: ADMIN_KEY
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SMTP_SENDER
+        sync: false
+      - key: SITE_URL
+        sync: false
+      # Add your other environment variables here
+      # - key: DATABASE_URL
+      #   value: your-database-url
+
+  # Frontend service
+  - type: web
+    name: pawfect-frontend
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run preview
+    envVars:
+      - key: NODE_VERSION
+        value: 18.0.0
+      - key: VITE_API_URL
+        value: https://pawfect-backend.onrender.com
+      # Add your frontend environment variables here
+      # - key: VITE_API_URL
+      #   value: https://pawfect-backend.onrender.com 
