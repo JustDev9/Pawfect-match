@@ -1,7 +1,5 @@
 # Pawfect Match
 
-![Pawfect Match Logo]
-
 A comprehensive pet adoption platform designed to connect loving homes with pets in need. The system features a user-friendly interface for potential adopters and a robust admin panel for shelter staff to manage pets, adoption applications, and more.
 
 ## Features
